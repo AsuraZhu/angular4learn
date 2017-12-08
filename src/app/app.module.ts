@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ClickMeComponent } from './click-me.component';
 import { MyconpentComponent } from './myconpent/myconpent.component';
@@ -30,6 +30,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     FormsModule,
     AppRoutingModule,
     HttpModule,
+    ReactiveFormsModule
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
   providers: [HeroService],
