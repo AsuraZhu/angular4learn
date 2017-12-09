@@ -16,10 +16,8 @@ export class HeroSearchService {
       return this.http
       .get(`http://localhost:8080/api/heroes/?name=${term}`)
       .map(response => response.json().data as Hero[])
-      .catch((err): Observable<Hero[]> => {
-        console.log(err);
+      .catch(err => {
         return Observable.of<Hero[]>([]);
-      })
-      ;
+      });
   }
 }
