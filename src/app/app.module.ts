@@ -14,6 +14,8 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { SignupFormComponent } from './signup-form.components';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './ngrx/reducer/index';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { SignupFormComponent } from './signup-form.components';
     FormsModule,
     AppRoutingModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(reducer)
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
   providers: [HeroService],
