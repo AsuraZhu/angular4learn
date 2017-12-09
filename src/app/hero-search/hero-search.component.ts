@@ -51,7 +51,8 @@ export class HeroSearchComponent implements OnInit {
         // TODO: add real error handling
         console.log(error);
         return Observable.of<Hero[]>([]);
-      });
+      })
+      ;
   }
 
   gotoDetail(hero: Hero): void {

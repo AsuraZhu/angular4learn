@@ -13,6 +13,7 @@ import { HttpModule } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { SignupFormComponent } from './signup-form.components';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     HeroDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,

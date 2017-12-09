@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms/src/model';
-import { Validators } from '@angular/forms/src/validators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { Validators } from '@angular/forms/src/validators';
+import { User } from './dashboard/signup.interface';
 @Component({
-  selector: 'signup-form',
+  selector: 'app-form',
   template: `
   <form novalidate (ngSubmit)="onSubmit(user)" [formGroup]="user">
   <label>
@@ -47,13 +48,13 @@ import { Validators } from '@angular/forms/src/validators';
 
 export class SignupFormComponent implements OnInit {
   user: FormGroup;
-  constructor() { }
+  constructor(private fb: FormBuilder) {}
   ngOnInit() {
-    this.user = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      account: new FormGroup({
-        email: new FormControl('', Validators.required),
-        confirm: new FormControl('', Validators.required)
+    this.user = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      account: this.fb.group({
+        email: ['', Validators.required],
+        confirm: ['', Validators.required]
       })
     });
   }
