@@ -17,6 +17,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { HeroSearchService } from '../hero-search.service';
 import { Hero } from '../hero';
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './hero-search.component.html',
@@ -46,13 +47,13 @@ export class HeroSearchComponent implements OnInit {
         // return the http search observable
         ? this.heroSearchService.search(term)
         // or the observable of empty heroes if there was no search term
-        : Observable.of<Hero[]>([]))
+        : Observable.of<Hero[]>([]),
+      )
       .catch(error => {
         // TODO: add real error handling
         console.log(error);
         return Observable.of<Hero[]>([]);
-      })
-      ;
+      });
   }
 
   gotoDetail(hero: Hero): void {
