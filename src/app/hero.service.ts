@@ -2,6 +2,7 @@ import { Hero } from './hero';
 // import { HEROES } from './mock-heroes';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
@@ -13,11 +14,14 @@ export class HeroService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
       .toPromise()
-      .then(response => response.json().data as Hero[])
+      .then(response => {
+        console.log('res' + response);
+        return response['data'] as Hero[];
+      })
       .catch(this.handleError);
   }
 
@@ -32,7 +36,7 @@ export class HeroService {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get(url)
         .toPromise()
-        .then(response => response.json().data as Hero)
+        .then(response => response['data'] as Hero)
         .catch(this.handleError);
   }
 }

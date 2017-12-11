@@ -17,6 +17,7 @@ import { SignupFormComponent } from './signup-form.components';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './ngrx/reducer/index';
 import { HttpInterceptorService } from './http/HttpInterceptorService';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -35,11 +36,19 @@ import { HttpInterceptorService } from './http/HttpInterceptorService';
     FormsModule,
     AppRoutingModule,
     HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducer)
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
-  providers: [HeroService, HttpInterceptorService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    },
+    HeroService,
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
