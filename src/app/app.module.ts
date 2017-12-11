@@ -16,6 +16,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { SignupFormComponent } from './signup-form.components';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './ngrx/reducer/index';
+import { HttpInterceptorService } from './http/HttpInterceptorService';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { reducer } from './ngrx/reducer/index';
     StoreModule.forRoot(reducer)
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
-  providers: [HeroService],
+  providers: [HeroService, HttpInterceptorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

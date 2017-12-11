@@ -1,6 +1,5 @@
 import * as loading from './loading';
 
-
 export interface State {
   loading: boolean;
 }
@@ -8,4 +7,5 @@ export interface State {
 export const reducer = {
   loading: loading.reducer
 };
+
 
