@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, trigger, state, style } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import {Store} from '@ngrx/store';
@@ -10,9 +10,21 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
+  animations: [
+    trigger('signal', [
+        state('go' , style({
+          'background-color': 'green'
+        })),
+        state('stop' , style({
+          'background-color': 'red'
+        }))
+    ])
+  ]
 })
 export class DashboardComponent implements OnInit {
 
+  // 动画
+  singnal: string;
   heroes: Hero[];
   submitted = false;
   // name =  'zs';
@@ -23,6 +35,12 @@ export class DashboardComponent implements OnInit {
   constructor(private heroService: HeroService, private store: Store<reducer.State>) {
       this.tagState$ = this.store.select('loading');
    }
+  stop() {
+    this.singnal = 'stop';
+  }
+  go() {
+    this.singnal = 'go';
+  }
   onSubmit(): void {
     this.submitted = true;
   }

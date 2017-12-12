@@ -20,8 +20,8 @@ import { AfterContentInit, ContentChildren, QueryList, Directive } from '@angula
 
 
 
-@Directive({ selector: '[appLi]'})
-export class ListItem {
+@Directive({ selector: 'li'})
+export class ListItemDirective {
 }
 @Component({
   selector: 'app-search',
@@ -30,7 +30,7 @@ export class ListItem {
   providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit, AfterContentInit {
-  @ContentChildren(ListItem) items: QueryList<ListItem>;
+  @ContentChildren(ListItemDirective) items: QueryList<ListItemDirective>;
 
   heroes: Observable<Hero[]>;
 

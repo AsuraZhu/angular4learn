@@ -27,6 +27,8 @@
   <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
 </form>
 
+<div style="width: 100px;height: 100px" [@signal]="'go'"></div>
+
 <app-form></app-form>
 <app-search>
   <li *ngFor="let hero of items">

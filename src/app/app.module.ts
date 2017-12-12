@@ -12,13 +12,14 @@ import { HeroService } from './hero.service';
 import { HttpModule } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-import { HeroSearchComponent, ListItem, } from './hero-search/hero-search.component';
+import { HeroSearchComponent, ListItemDirective } from './hero-search/hero-search.component';
 import { SignupFormComponent } from './signup-form.components';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './ngrx/reducer/index';
 import { HttpInterceptorService } from './http/HttpInterceptorService';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -31,10 +32,11 @@ import { CommonModule } from '@angular/common';
     HeroesComponent,
     HeroSearchComponent,
     SignupFormComponent,
-    ListItem
+    ListItemDirective,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule ,
     FormsModule,
     AppRoutingModule,
     HttpModule,
