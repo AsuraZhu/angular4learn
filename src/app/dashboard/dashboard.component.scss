@@ -54,6 +54,9 @@ h4 {
 @media (max-width: 1024px) {
   .grid {
     margin: 0;
+    .module {
+      min-width: 60px;
+    }
   }
   .module {
     min-width: 60px;
