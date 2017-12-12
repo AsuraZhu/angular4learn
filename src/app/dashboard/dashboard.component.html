@@ -28,5 +28,9 @@
 </form>
 
 <app-form></app-form>
-<app-search></app-search>
+<app-search>
+  <li *ngFor="let hero of items">
+    {{hero}}
+  </li>
+</app-search>
 

@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   // name =  'zs';
   test = 'zs';
   model = new Hero(18, 'Dr IQ', 'Really Smar', 'Chuck Overstreet');
+  items = ['First', 'Second', 'Third'];
   tagState$: Observable<boolean>;
   constructor(private heroService: HeroService, private store: Store<reducer.State>) {
       this.tagState$ = this.store.select('loading');

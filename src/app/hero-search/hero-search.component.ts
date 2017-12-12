@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ContentChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -16,16 +16,24 @@ import 'rxjs/add/operator/distinctUntilChanged';
 
 import { HeroSearchService } from '../hero-search.service';
 import { Hero } from '../hero';
+import { AfterContentInit, ContentChildren, QueryList, Directive } from '@angular/core';
 
 
+
+@Directive({ selector: '[appLi]'})
+export class ListItem {
+}
 @Component({
   selector: 'app-search',
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.css'],
   providers: [HeroSearchService]
 })
-export class HeroSearchComponent implements OnInit {
+export class HeroSearchComponent implements OnInit, AfterContentInit {
+  @ContentChildren(ListItem) items: QueryList<ListItem>;
+
   heroes: Observable<Hero[]>;
+
   private searchTerms = new Subject<string>();
 
   constructor(
@@ -54,6 +62,10 @@ export class HeroSearchComponent implements OnInit {
         console.log(error);
         return Observable.of<Hero[]>([]);
       });
+  }
+
+  ngAfterContentInit(): void {
+    console.log(this.items);
   }
 
   gotoDetail(hero: Hero): void {
