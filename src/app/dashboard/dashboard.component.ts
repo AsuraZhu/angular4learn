@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.tagState$, this.store);
     this.store.dispatch(new load.ShowAction());
     this.heroService.getHeroes()
-      .then(heroes => { console.log(heroes[2].name); this.heroes = heroes; } );
+      .then(heroes => { console.log(heroes); this.heroes = heroes; } );
 }
 
 }

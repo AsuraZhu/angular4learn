@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class HeroService {
   private headers = new Headers({'Content-Type': 'application/json'});
-  private heroesUrl = 'http://localhost:8080/api/get';
+  private heroesUrl = 'http://batpool.dev.ailadui.net/v1/api/user/profile/userinfo';
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
@@ -19,8 +19,10 @@ export class HeroService {
     return this.http.get(this.heroesUrl)
       .toPromise()
       .then(response => {
-        console.log('res' + response);
-        return response['data'] as Hero[];
+        const hero = [];
+        hero[0] = new Hero(response['data']['user_type'] , 'hass' , 'aaa' , 'aaa');
+        //  现将后台获取到的数据处理后 返回 hero[]
+        return hero;
       })
       .catch(this.handleError);
   }
