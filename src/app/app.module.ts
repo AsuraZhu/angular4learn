@@ -39,7 +39,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule ,
     FormsModule,
     AppRoutingModule,
-    HttpModule,
     HttpClientModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducer)

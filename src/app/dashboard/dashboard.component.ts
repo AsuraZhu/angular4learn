@@ -6,6 +6,7 @@ import * as reducer from '../ngrx/reducer';
 import * as load from '../ngrx/action/loading';
 import { Observable } from 'rxjs/Observable';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -51,10 +52,9 @@ export class DashboardComponent implements OnInit {
     this.store.dispatch(new load.ShowAction());
   }
   ngOnInit(): void {
-    console.log(this.tagState$, this.store);
     this.store.dispatch(new load.ShowAction());
     this.heroService.getHeroes()
-      .then(heroes => { console.log(heroes); this.heroes = heroes; } );
+      .then(heroes => { console.log(heroes); this.heroes = heroes; });
 }
 
 }
